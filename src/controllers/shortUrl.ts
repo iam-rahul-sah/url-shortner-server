@@ -26,7 +26,7 @@ export const getAllUrl = async (
   res: express.Response
 ) => {
     try {
-        const shortUrl = await UrlModel.find();
+        const shortUrl = await UrlModel.find().sort({createdAt: -1});
         if(shortUrl.length < 0){
             res.status(404).send({ message: "Short urls not found!"});
         } else {
